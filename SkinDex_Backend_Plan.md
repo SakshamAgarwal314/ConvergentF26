@@ -3,7 +3,7 @@ Texas Convergent | Health Tech | Fall 2026
 
 Status: Proposed architecture for team discussion.
 
-## 1. Starting scope
+## 1. Starting scope - DONE
 
 Start with one backend application, a PostgreSQL database, and a small reviewed product catalog.
 
@@ -15,7 +15,7 @@ The main design priorities are accurate historical records, controlled access, a
 
 For the first demo, use adult test accounts and synthetic patient data, with approximately 30–50 carefully documented products. Expand into minors, photos, OCR, scheduling, and EHR integration after the core workflow works.
 
-## 2. Recommended stack
+## 2. Recommended stack - DONE
 
 Assumption: The team is comfortable with JavaScript and TypeScript.
 
@@ -34,7 +34,7 @@ Supabase supports database row-level security and storage access policies. Use t
 
 Keep privileged credentials and AI provider keys on the server.
 
-## 3. Backend modules
+## 3. Backend modules - NOT STARTED 
 
 | Module | Responsibilities |
 |---|---|
