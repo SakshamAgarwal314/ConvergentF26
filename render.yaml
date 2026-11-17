@@ -1,0 +1,31 @@
+# Render Blueprint: New > Blueprint in the Render dashboard, point it at this repo.
+services:
+  - type: web
+    name: skindex-api
+    runtime: python
+    plan: starter            # free instances sleep after 15 min idle; starter stays up
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    # migrations run on every deploy before the new version takes traffic
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /v1/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: SKINDEX_ENV
+        value: production
+      - key: DATABASE_URL        # Supabase > Connect > Session pooler (port 5432) URI
+        sync: false
+      - key: SUPABASE_URL        # https://<project-ref>.supabase.co
+        sync: false
+      - key: SUPABASE_SECRET_KEY # Supabase > Settings > API Keys > secret key (sb_secret_...)
+        sync: false
+      - key: STORAGE_BUCKET
+        value: checkin-photos
+      - key: MODEL_DIR
+        value: models/prod
+      - key: ADMIN_USER_IDS      # comma-separated Supabase user ids allowed to export training data
+        sync: false
+      - key: CORS_ORIGINS        # only needed for Expo web or a web dashboard
+        sync: false

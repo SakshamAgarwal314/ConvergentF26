@@ -1,10 +1,7 @@
 .venv/
-.venv/*
-
-.DS_Store
-node_modules/
-dist/
+__pycache__/
+.pytest_cache/
 .env
-.env.*
-!.env.example
-*.tsbuildinfo
+local.db
+local_uploads/
+models/dev/
